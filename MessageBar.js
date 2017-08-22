@@ -17,7 +17,11 @@ import {
 
 let windowWidth = Dimensions.get('window').width
 let windowHeight = Dimensions.get('window').height
-
+/**
+ * Properties 
+ * animatedStyle      
+ * 
+ */
 class MessageBar extends Component {
   constructor (props) {
     super(props)
@@ -385,7 +389,7 @@ class MessageBar extends Component {
 
     return (
       <Animated.View
-        style={{
+        style={[{
           transform: this.animationTypeTransform,
           backgroundColor: this.state.backgroundColor,
           borderColor: this.state.strokeColor,
@@ -399,7 +403,7 @@ class MessageBar extends Component {
           paddingBottom: this.state.viewBottomInset,
           paddingLeft: this.state.viewLeftInset,
           paddingRight: this.state.viewRightInset
-        }}>
+        }, this.props.animatedStyle]}>
         <TouchableOpacity
           onPress={() => {
             this._alertTapped()
@@ -426,6 +430,7 @@ class MessageBar extends Component {
             </View>
           </View>
         </TouchableOpacity>
+        {this.props.children}
       </Animated.View>
     )
   }
