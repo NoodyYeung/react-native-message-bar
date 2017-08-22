@@ -409,7 +409,7 @@ class MessageBar extends Component {
             this._alertTapped()
           }}
           disabled={this.props.touchDisabled}
-          style=[{{ flex: 1 }}, this.props.touchStyle]>
+          style={[{ flex: 1 }, this.props.touchStyle]}>
           <View
             style={{
               flex: 1,
