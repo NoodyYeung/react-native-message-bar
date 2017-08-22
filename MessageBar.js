@@ -391,8 +391,8 @@ class MessageBar extends Component {
       <Animated.View
         style={[{
           transform: this.animationTypeTransform,
-          backgroundColor: this.state.backgroundColor,
-          borderColor: this.state.strokeColor,
+          backgroundColor: this.props.backgroundColor,
+          borderColor: this.props.strokeColor,
           borderBottomWidth: 1,
           position: 'absolute',
           top: this.state.viewTopOffset,
@@ -415,7 +415,7 @@ class MessageBar extends Component {
               flex: 1,
               flexDirection: 'row',
               alignItems: 'flex-end',
-              padding: this.state.messageBarPadding
+              padding: this.props.messageBarPadding
             }}>
             {this.renderImage()}
             <View
@@ -437,9 +437,9 @@ class MessageBar extends Component {
   }
 
   renderImage () {
-    if (this.state.avatar != null) {
+    if (this.props.avatar != null) {
       var imageSource
-      var avatar = this.state.avatar
+      var avatar = this.props.avatar
 
       if (typeof avatar === 'string') {
         if (avatar.match(/^https?:/)) {
@@ -450,7 +450,7 @@ class MessageBar extends Component {
           imageSource = avatar
         }
 
-        return <Image source={imageSource} style={this.state.avatarStyle} />
+        return <Image source={imageSource} style={this.props.avatarStyle} />
       } else if (React.isValidElement(avatar)) {
         // this is a react component
         return avatar
@@ -459,24 +459,24 @@ class MessageBar extends Component {
   }
 
   renderTitle () {
-    if (this.state.title != null) {
+    if (this.props.title != null) {
       return (
         <Text
-          numberOfLines={this.state.titleNumberOfLines}
-          style={this.state.titleStyle}>
-          {this.state.title}
+          numberOfLines={this.props.titleNumberOfLines || this.state.titleNumberOfLines}
+          style={this.props.titleStyle || this.state.titleStyle}>
+          {this.props.title}
         </Text>
       )
     }
   }
 
   renderMessage () {
-    if (this.state.message != null) {
+    if (this.props.message != null) {
       return (
         <Text
-          numberOfLines={this.state.messageNumberOfLines}
-          style={this.state.messageStyle}>
-          {this.state.message}
+          numberOfLines={this.props.messageNumberOfLines || this.state.messageNumberOfLines}
+          style={this.props.messageStyle || this.state.messageStyle}>
+          {this.props.message}
         </Text>
       )
     }
