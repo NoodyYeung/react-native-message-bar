@@ -177,7 +177,7 @@ class MessageBar extends Component {
     this._onShow()
 
     // If the duration is null, do not hide the
-    if (this.state.shouldHideAfterDelay) {
+    if (false) {
       this.timeoutHide = setTimeout(() => {
         this.hideMessageBarAlert()
       }, this.state.duration)
@@ -195,6 +195,7 @@ class MessageBar extends Component {
   * Hide the alert, typically used when user tap the alert
   */
   hideMessageBarAlert () {
+    console.log(this.alertShown);
     // Hide the alert after a delay set in the state only if the alert is still visible
     if (!this.alertShown) {
       return
